@@ -1,0 +1,110 @@
+@prefix abes: <http://www.abes.fr/vocabularies/> .
+@prefix theses: <http://www.abes.fr/vocabularies/theses> .
+@prefix role: <http://www.abes.fr/vocabularies/theses/roles/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdac: <http://rdaregistry.info/Elements/c/> .
+@prefix rdam: <http://rdaregistry.info/Elements/m/> .
+@prefix rdau: <http://rdaregistry.info/Elements/u/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/>.
+@prefix vivo: <http://vivoweb.org/ontology/core#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix org: <http://www.w3.org/ns/org#>.
+
+abes: a owl:Ontology ;
+    dcterms:description "Vocabulaires de l'ABES pour l'exposition de ses metadonnées"@fr , "ABES vocabularies for the description of its metadata"@en;
+    dcterms:publisher <https://www.idref.fr/033702462>.
+
+######################### Roles ###############################
+
+#Roles
+abes:Roles a skos:ConceptScheme;
+	skos:editorialNote "Cette liste de rôles est spécifique aux thèses françaises. Les autres rôles sont exprimés  'Marc Relators' de la Bibliothèque du Congrès sont utilisés"@fr.
+
+#956 : président du jury est actuellement transformé en http://id.loc.gov/vocabulary/relators/pra (praeses), qui semble adéquat. Ex. https://www.sudoc.fr/200479873.rdf
+
+#958 : rapporteur de la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/152128204
+role:958 a owl:ObjectProperty, skos:Concept; #ou role:rapporteur ou role:958 ?
+	rdfs:subPropertyOf dcterms:contributor;
+	rdfs:domain bibo:Thesis;
+	rdfs:Range foaf:Person;
+	skos:inScheme abes:Roles;
+	rdfs:isDefinedBy abes:;
+	rdfs:label "Rapporteur de la thèse"@fr, "Thesis referee"@en;
+	skos:definition "Personne qui rend compte du contenu de la thèse"@fr;
+	skos:notation "958". #pe pas utile de le garder, sauf si on nomme la propriété d'après le code Unimarc
+#981 : laboratoire associé à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/184902991
+role:981 a owl:ObjectProperty, skos:Concept ; #ou role:associatedLaboratory ou role:laboratoireAssocié
+    rdfs:subPropertyOf dcterms:contributor;
+    rdfs:domain bibo:Thesis;
+    skos:inScheme abes:Roles ;
+	rdfs:isDefinedBy abes: ;
+	rdfs:label "Laboratoire associé à la thèse"@fr,"Laboratory associated with the thesis"@en;
+	skos:definition "Partenaire de recherche de type laboratoire ayant participé à la réalisation de la thèse par la mise à disposition de moyens";
+	skos:notation "981".
+
+#982 : entreprise associée à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/121809439.rdf
+role:982 a owl:ObjectProperty, skos:Concept ;
+    rdfs:subPropertyOf dcterms:contributor;
+    rdfs:domain bibo:Thesis;
+    skos:inScheme abes:Roles;
+	rdfs:isDefinedBy abes:;
+	rdfs:label "Entreprise associée à la thèse"@fr,"Company associated with the thesis"@en;
+	skos:definition "Partenaire de recherche de type entreprise ayant participé à la réalisation de la thèse par la mise à disposition de moyens."@fr;
+	skos:notation "982".
+
+#983 : fondation associée à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex.  https://www.sudoc.fr/20310000X.rdf
+role:983 a owl:ObjectProperty, skos:Concept ; 
+    rdfs:subPropertyOf dcterms:contributor;
+    rdfs:domain bibo:Thesis;
+    skos:inScheme abes:Roles;
+	rdfs:isDefinedBy abes:;
+	rdfs:label "Fondation associée à la thèse"@fr,"Foundation associated with the thesis"@en;
+	skos:definition "Partenaire de recherche de type fondation ayant participé à la réalisation de la thèse par la mise à disposition de moyens"@fr;
+	skos:notation "983".
+
+#984 : équipe de recherche associée à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/167529110.rdf
+role:984 a owl:ObjectProperty, skos:Concept ;
+	rdfs:subPropertyOf dcterms:contributor;
+	rdfs:domain bibo:Thesis;
+	rdfs:isDefinedBy abes:;
+	rdfs:label "Equipe de recherche associée à la thèse"@fr,"Research team associated with the thesis"@en;
+	skos:definition "Partenaire de recherche de type équipe de recherche ayant participé à la réalisation de la thèse par la mise à disposition de moyens"@fr;
+	skos:notation "984".
+
+#985 : autre partenaire associé à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/042972817.rdf
+role:985 a owl:ObjectProperty, skos:Concept ; 
+    rdfs:subPropertyOf dcterms:contributor;
+    rdfs:domain bibo:Thesis;
+    skos:inScheme abes:Roles;
+	rdfs:isDefinedBy abes:;
+	rdfs:label "Autre partenaire associé à la thèse"@fr,"Other partner associated with the thesis"@en;
+	skos:definition "Partenaire de recherche de type autre ayant participé à la réalisation de la thèse par la mise à disposition de moyens"@fr;
+	skos:notation "985".
+
+#995 : organisme de cotutelle est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/097145211.rdf
+role:995 a owl:ObjectProperty, skos:Concept;
+    rdfs:subPropertyOf dcterms:contributor;
+    rdfs:domain bibo:Thesis;
+    skos:inScheme abes:Roles;
+	rdfs:isDefinedBy abes:;
+	rdfs:label "Organisme de cotutelle"@fr,"Cotutelle organization"@en;
+	skos:definition "Organisme étranger cosignataire de la convention de cotutelle internationale avec l'organisme de soutenance"@fr;
+	skos:notation "995".
+
+#996 : école doctorale associée à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/20310000X.rdf
+role:996 a owl:ObjectProperty, skos:Concept; 
+    rdfs:subPropertyOf dcterms:contributor;
+    rdfs:domain bibo:Thesis;
+    skos:inScheme abes:Roles;
+	rdfs:isDefinedBy abes:;
+	rdfs:label "Ecole doctorale associée à la thèse"@fr,"Doctoral school associated with the thesis"@en;
+	skos:definition "Ecole doctorale au sein de laquelle s'est déroulée la recherche du doctorant"@fr;
+	skos:notation "996".

@@ -17,14 +17,18 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix org: <http://www.w3.org/ns/org#>.
+@prefix hub: <http://hub.abes.fr/namespace/> .
+@prefix springerB: <http://hub.abes.fr/namespace/springerB/> . # namespaces à changer en namespace (pareil pour SpringerJ)
+@prefix springerChapTypes: <http://hub.abes.fr/springerB/chapterType/>.
 
 abes: a owl:Ontology ;
     dcterms:description "Vocabulaires de l'ABES pour l'exposition de ses metadonnées"@fr , "ABES vocabularies for the description of its metadata"@en;
     dcterms:publisher <https://www.idref.fr/033702462>.
 
-######################### Roles ###############################
+########################################################################
+######################### Thèses : rôles ###############################
+########################################################################
 
-#Roles
 abes:Roles a skos:ConceptScheme;
 	skos:editorialNote "Cette liste de rôles est spécifique aux thèses françaises. Les autres rôles sont exprimés  'Marc Relators' de la Bibliothèque du Congrès sont utilisés"@fr.
 
@@ -108,3 +112,294 @@ role:996 a owl:ObjectProperty, skos:Concept;
 	rdfs:label "Ecole doctorale associée à la thèse"@fr,"Doctoral school associated with the thesis"@en;
 	skos:definition "Ecole doctorale au sein de laquelle s'est déroulée la recherche du doctorant"@fr;
 	skos:notation "996".
+	
+#########################################################################
+######################### Hub de métadonnées ############################
+#########################################################################
+
+hub: a owl:Ontology ;
+    rdfs:label "Vocabulaires de l'ABES pour le signalement de corpus de documentation électronique"@fr , "ABES vocabularies for the description of e-resources collections"@en.
+
+######################### Propriétés ####################################
+
+springerB:bookVolumeNumber a owl:DatatypeProperty ;
+   rdfs:isDefinedBy hub: ;
+   rdfs:subPropertyOf bibo:volume ;
+   rdfs:label "a pour numéro de volume"@fr, "has volume number"@en ;
+   rdfs:comment "Numéro du volume dans sa collection"@fr, "Volume number of the book in the series"@en ;
+   rdfs:domain rdac:C10001;
+   rdfs:range rdfs:Literal.
+
+
+springerB:hasSubjectCollection a owl:ObjectProperty ;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:subject ;
+	rdfs:label "a pour domaine de collection"@fr, "has collection domain"@en ;
+	rdfs:comment "Domaines de collections propres à Springer"@fr, "Springer's own series domains"@en;
+	rdfs:domain bibo:Book, rdac:C10001 ;
+	rdfs:range skos:Concept.
+	
+hub:isPartOfThisBook a owl:ObjectProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:isPartOf ;
+	rdfs:label "fait partie de ce livre"@fr, "is part of this book"@en;
+	rdfs:domain rdac:C10001 ;
+	rdfs:range bibo:Book, rdac:C10001.
+
+hub:hasAuthorshipAffiliation a owl:ObjectProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf vivo:relates;
+	rdfs:label "a pour affiliation associée"@fr, "has related affiliation"@en ;
+	rdfs:comment "Relie une instance Authorship à l'organisation à laquelle est affiliée le contributeur"@fr, "Relates a Authorship instance to the organization the contributor is affiliated to"@en ;
+	rdfs:domain vivo:Authorship;
+	rdfs:range foaf:Organization.
+	
+## maj 22/09/2017 : note sur la contribution (présente dans certains corpus)
+
+hub:hasAuthorshipNote a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:Description;
+	rdfs:label "a une note relative à cette contribution@fr", "has a note relating to this publication"@en ;
+	rdfs:comment "Note sur le contributeur relative à cette publication"@fr, "Note on the contribor relating to this publication"@en ;
+	rdfs:domain vivo:Authorship;
+	rdfs:range rdfs:Literal.
+	
+hub:affiliationContent a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:description;
+	rdfs:label "information sur l'organisation"@fr, "information about the organization"@en;
+	rdfs:comment "Cette propriété contient des informations décrivant une affiliation mais insuffisamment structurées pour être précisées"@fr, "This property contains informations about an affiliation, but not enough structured to be further specified"@en;
+	rdfs:domain foaf:Organization;
+	rdfs:range rdfs:Literal.
+	
+hub:classification a owl:ObjectProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:description;
+	rdfs:label "a pour classification"@fr, "has classification"@en;
+	rdfs:comment "Cette propriété relie une instance d'oeuvre à une instance de classification propre à l'éditeur"@fr, "This property relates a Work instance of the publisher's own classification"@en;
+	rdfs:domain rdac:C10001;
+	rdfs:range skos:Concept.
+	
+hub:classificationCode a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:subject;
+	rdfs:label "a pour code de classification"@fr, "has classification code"@en;
+	rdfs:comment "Cette propriété relie une instance de Concept à un code de classification"@fr, "This property relates a Concept instance to a classification code"@en;
+	rdfs:domain skos:Concept;
+	rdfs:range rdfs:Literal.
+	
+hub:priority a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:label "a pour rang de priorité"@fr, "has classification code"@en;
+	rdfs:comment "Un nombre entier pondérant la priorité (décroissante) du concept dans un document"@fr, "An integer number weighting the priority of the concept"@en;
+	rdfs:domain skos:Concept;
+	rdfs:range rdfs:Literal.
+	
+springerB:chapterType a owl:ObjectProperty; #à corriger plus tard en chapterType
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:subject;
+	rdfs:label "a pour type de chapitre"@fr, "has chapter type"@en;
+	rdfs:comment "Les types de chapitres sont choisis dans une liste fermée propre à Springer"@fr, "Chapter types are chosen in a closed list specific to Springer"@en;
+	rdfs:domain bibo:Chapter, rdac:C10001;
+	rdfs:range springerB:ChapterTypes.
+
+hub:subTitle a owl:DatatypeProperty ;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:title ;
+    rdfs:label "a pour sous-titre"@fr, "has subtitle"@en ;
+    rdfs:comment "Sous-titre d'un livre ou d'une revue"@fr , "Subtitle of a book, periodical or series"@en ;
+    rdfs:domain bibo:Document, rdac:C10001;
+    rdfs:range rdfs:Literal . 
+    
+hub:sequenceNumber a owl:DatatypeProperty ;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:title ;
+    rdfs:label "Numéro de séquence"@fr, "sequence number"@en ;
+    rdfs:comment "Numéro de chapitre ou de partie d'un livre"@fr, "Part or chapter number of a book"@en ;
+    rdfs:domain bibo:BookSection, bibo:BookChapter, rdac:C10001 ;
+    rdfs:range rdfs:Literal . 
+    
+#hub:chapterCount : abandonné ?
+	
+hub:hasSudocProxy a owl:ObjectProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:label "est probablement identique à ce document dans le Sudoc"@fr, "is probably the same as this document in the Sudoc"@en;
+	rdfs:comment "identifie une publication (manifestation) imprimée ou électronique à un document dans le Sudoc"@fr, "identifies a print or electronic publication (manifestation) with a document in the Sudoc"@en;
+	rdfs:domain rdac:C10007, bibo:Book;
+	rdfs:range bibo:Document.
+
+hub:hasOrcidProxy a owl:ObjectProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:label "est probablement identique à ce document dans ORCID"@fr, "is probably the same as this document in the ORCID"@en;
+	rdfs:comment "Cette propriété relie une instance d'oeuvre à une instance de classification propre à l'éditeur"@fr, "This property relates a Work instance of the publisher's own classification"@en;
+	rdfs:domain rdac:C10007, bibo:Book;
+	rdfs:range bibo:Document.
+
+hub:maybeSameAs a owl:ObjectProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:label "est probablement identique à ce document"@fr, "is probably the same as this document"@en;
+	rdfs:comment "Identifie sans certitude une instance de personne avec une autre URI"@fr, "Identifies a contributor without certainty with another URI"@en;
+	rdfs:domain foaf:Person;
+	rdfs:range foaf:Person.
+
+hub:ddc a owl:DatatypeProperty ;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dc:subject;
+	rdfs:label "a pour indice Dewey"@fr, "has Dewey number"@en;
+	rdfs:domain rdac:C10001, bibo:Document;
+	rdfs:range rdfs:Literal.
+
+hub:siret a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "a un numéro SIRET"@fr, "has SIRET identifier"@en;
+	rdfs:comment "Identifiant SIRET à 14 chiffres attribué par l'INSEE"@fr, "14-figure SIRET identifier assigned by INSEE"@en;
+	rdfs:domain schema:Organization, foaf:Organization;
+	rdfs:range rdfs:Literal.
+	
+### 14/09/2016 ajout mjn pour Wiley : hub:degree. rdau:P60363 = "title of the agent"
+hub:degree a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf rdau:P60363;
+	rdfs:label "a pour diplôme"@fr, "has degree"@en;
+	rdfs:comment "Tout diplôme universitaire ou professionnel, abrégé ou en toutes lettres"@fr, "Any academic or professionnal degree, in abbreviation or in full"@en;
+	rdfs:domain foaf:Person;
+	rdfs:range rdfs:Literal.
+
+## 21/09/2017
+hub:countryOfPublication a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf vivo:placeOfPublication;
+	rdfs:label "a été publié dans ce pays"@fr, "was published in this country"@en;
+	rdfs:comment "Mention de pays de publication"@fr, "Statement of the country of publication"@en;
+	rdfs:domain rdac:C10007, bibo:Document;
+	rdfs:range rdfs:Literal. #Préciser ? 
+## 29/05/2018
+hub:memberOfUnit a owl:ObjectProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf org:memberOf;
+	rdfs:label "est membre d'une unité organisationnelle"@fr, "is member of an organizational unit"@en;
+	rdfs:comment "Relie une personne à une unité organisationnelle à laquelle elle appartient"@fr, "Relates a person to an organizational unit to which they belong"@en;
+	rdfs:domain foaf:Person;
+	rdfs:range org:OrganizationalUnit.
+	
+hub:osti a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "a pour identifiant OSTI"@fr, "has an OSTI identifier"@en;
+	rdfs:comment "identifiant attribué à un document par l'Office of Scientific and Technical Information (Etats-Unis)"@fr, "Identifier assigned to a document by the Office of Scientific and Technical Information (US)"@en;
+	rdfs:domain rdac:C10007, bibo:Document;
+	rdfs:range rdfs:Literal.
+	
+hub:eid a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "a pour EID Scopus"@fr, "has a Scopus EID"@en;
+	rdfs:comment "Identifiant attribué à un document par la base de données Scopus"@fr, "Identifier assigned to a document by the Scopus database"@en;
+	rdfs:domain rdac:C10007, bibo:Document;
+	rdfs:range rdfs:Literal.
+	
+hub:wosuid a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "a pour identifiant WOS"@fr, "has a WOS identifier"@en;
+	rdfs:comment "Identifiant attribué à un document par le Web of Science"@fr, "Identifier assigned to a document by the Web of Science"@en;
+	rdfs:domain rdac:C10007, bibo:Document;
+	rdfs:range rdfs:Literal.
+	
+hub:ringgoldID a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "a pour identifiant Ringgold"@fr, "has a Ringgold identifier"@en;
+	rdfs:comment "Identifiant pour les organisations du secteur de l'édition"@fr, "Identifier for organizations in the publishing industry"@en;
+	rdfs:domain rdac:C10007, bibo:Document;
+	rdfs:range rdfs:Literal.
+	
+hub:fundrefID a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "a pour identifiant FundRef"@fr, "has a FundRef identifier"@en;
+	rdfs:comment "Identifiant pour les organismes accordant des subventions"@fr, "Identifier for grant-giving organizations"@en;
+	rdfs:domain org:Organization, foaf:Organization;
+	rdfs:range rdfs:Literal.
+#20/04/2020
+hub:articleType a owl:ObjectProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:subject;
+	rdfs:label "a pour type d'article"@fr, "has article type"@en;
+	rdfs:comment "Catégorie d'article (liste non fermée)"@fr, "Article category (unclosed list)"@en;
+	rdfs:domain rdac:C10001,bibo:Article;
+	rdfs:range skos:Concept.
+
+hub:rankByRole a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf vivo:rank;
+	rdfs:label "a pour rang par rôle"@fr, "has a rank by role"@en;
+	rdfs:comment "A pour valeur un code Marc Relator suivi d'un numéro de classement : ex. aut1 pour la première mention d'auteur"@fr, "Has for value a Marc Relator code followed by a ranking number : e.g. aut1 for the first author statement"@en;
+	rdfs:domain vivo:Authorship;
+	rdfs:range rdfs:Literal.
+	
+#12/06/2020	
+hub:hasForHeight a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:format;
+	rdfs:label "a pour hauteur"@fr, "has for height"@en;
+	rdfs:comment "Hauteur d'un document imprimé"@fr, "Height of a printed document"@en;
+	rdfs:domain rdac:C10007, bibo:Document;
+	rdfs:range rdfs:Literal.
+
+hub:sercode a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "a pour code de collection"@fr, "has for series code"@en;
+	rdfs:comment "identifant interne d'une collection, attribué par un éditeur"@fr, "internal series identifier, assigned by a publisher"@en;
+	rdfs:domain rdac:C10007, bibo:Series;
+	rdfs:range rdfs:Literal.
+	
+hub:publisher-id a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "a pour identifiant d'éditeur"@fr, "has for publisher identifier"@en;
+	rdfs:comment "identifant interne d'une revue, ou d'un article, attribué par un éditeur"@fr, "internal journal, or article identifier, assigned by a publisher"@en;
+	rdfs:domain rdac:C10001, bibo:Document;
+	rdfs:range rdfs:Literal.
+
+#23/07/2020
+hub:ean a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "a pour code-barres"@fr, "has for barcode"@en;
+	rdfs:comment "European Article Number"@fr, "European Article Number"@en;
+	rdfs:domain bibo:Document;
+	rdfs:range rdfs:Literal.
+	
+#23/07/2020
+hub:hasPPN a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "a pour PPN"@fr, "has for PPN"@en;
+	rdfs:comment "Identifiant interne des notices du Sudoc (PICA Production Number)"@fr, "SUDOC records internal identifier (PICA Production Number)"@en;
+	rdfs:domain bibo:Document;
+	rdfs:range rdfs:Literal.
+######################### Classes ####################################
+#Chapter type pour typer la liste fermée ci-dessous
+
+springerB:ChapterTypes a skos:ConceptScheme;
+	rdfs:isDefinedBy hub: ;
+	rdfs:label "Type de chapitre"@fr, "Chapter type"@en.
+
+######################### Valeurs contrôlées ###############################
+
+#Chapter types
+springerChapTypes:originalpaper skos:inScheme springerB:ChapterTypes;
+	rdfs:isDefinedBy hub: ;
+	rdfs:label "article original"@fr, "original paper"@en.
+springerChapTypes:erratum skos:inScheme springerB:ChapterTypes;
+	rdfs:isDefinedBy hub: ;
+	rdfs:label "erratum"@fr, "erratum"@en.
+springerChapTypes:reviewpaper skos:inScheme springerB:ChapterTypes;
+	rdfs:isDefinedBy hub: ;
+	rdfs:label "article critique"@fr, "review paper"@en.
+springerChapTypes:compoundobjecterratum skos:inScheme springerB:ChapterTypes;
+	rdfs:isDefinedBy hub: ;
+	rdfs:label "autre type d'erratum"@fr, "other type of erratum"@en.

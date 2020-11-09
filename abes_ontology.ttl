@@ -24,7 +24,7 @@
 abes: a owl:Ontology ;
     dcterms:description "Vocabulaires de l'ABES pour l'exposition de ses metadonnées"@fr , "ABES vocabularies for the description of its metadata"@en;
     dcterms:publisher <https://www.idref.fr/033702462>.
-
+## TEST GIT
 ########################################################################
 ######################### Thèses : rôles ###############################
 ########################################################################

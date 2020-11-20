@@ -32,10 +32,10 @@ abes: a owl:Ontology ;
 abes:Roles a skos:ConceptScheme;
 	skos:editorialNote "Cette liste de rôles est spécifique aux thèses françaises. Les autres rôles sont exprimés  'Marc Relators' de la Bibliothèque du Congrès sont utilisés"@fr.
 
-#956 : président du jury est actuellement transformé en http://id.loc.gov/vocabulary/relators/pra (praeses), qui semble adéquat. Ex. https://www.sudoc.fr/200479873.rdf
+#956 : président du jury  http://id.loc.gov/vocabulary/relators/pra (praeses), qui semble adéquat : conservé. Ex. https://www.sudoc.fr/200479873.rdf
 
-#958 : rapporteur de la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/152128204
-role:958 a owl:ObjectProperty, skos:Concept; #ou role:rapporteur ou role:958 ?
+#958 : rapporteur de la thèse anciennement http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/152128204
+role:958 a owl:ObjectProperty, skos:Concept; 
 	rdfs:subPropertyOf dcterms:contributor;
 	rdfs:domain bibo:Thesis;
 	rdfs:Range foaf:Person;
@@ -44,7 +44,7 @@ role:958 a owl:ObjectProperty, skos:Concept; #ou role:rapporteur ou role:958 ?
 	rdfs:label "Rapporteur de la thèse"@fr, "Thesis referee"@en;
 	skos:definition "Personne qui rend compte du contenu de la thèse"@fr;
 	skos:notation "958". #pe pas utile de le garder, sauf si on nomme la propriété d'après le code Unimarc
-#981 : laboratoire associé à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/184902991
+#981 : laboratoire associé à la thèse anciennement http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/184902991
 role:981 a owl:ObjectProperty, skos:Concept ; #ou role:associatedLaboratory ou role:laboratoireAssocié
     rdfs:subPropertyOf dcterms:contributor;
     rdfs:domain bibo:Thesis;
@@ -54,7 +54,7 @@ role:981 a owl:ObjectProperty, skos:Concept ; #ou role:associatedLaboratory ou r
 	skos:definition "Partenaire de recherche de type laboratoire ayant participé à la réalisation de la thèse par la mise à disposition de moyens";
 	skos:notation "981".
 
-#982 : entreprise associée à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/121809439.rdf
+#982 : entreprise associée à la thèse anciennement http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/121809439.rdf
 role:982 a owl:ObjectProperty, skos:Concept ;
     rdfs:subPropertyOf dcterms:contributor;
     rdfs:domain bibo:Thesis;
@@ -64,7 +64,7 @@ role:982 a owl:ObjectProperty, skos:Concept ;
 	skos:definition "Partenaire de recherche de type entreprise ayant participé à la réalisation de la thèse par la mise à disposition de moyens."@fr;
 	skos:notation "982".
 
-#983 : fondation associée à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex.  https://www.sudoc.fr/20310000X.rdf
+#983 : fondation associée à la thèse anciennement en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex.  https://www.sudoc.fr/20310000X.rdf
 role:983 a owl:ObjectProperty, skos:Concept ; 
     rdfs:subPropertyOf dcterms:contributor;
     rdfs:domain bibo:Thesis;
@@ -74,7 +74,7 @@ role:983 a owl:ObjectProperty, skos:Concept ;
 	skos:definition "Partenaire de recherche de type fondation ayant participé à la réalisation de la thèse par la mise à disposition de moyens"@fr;
 	skos:notation "983".
 
-#984 : équipe de recherche associée à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/167529110.rdf
+#984 : équipe de recherche associée à la thèse anciennement http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/167529110.rdf
 role:984 a owl:ObjectProperty, skos:Concept ;
 	rdfs:subPropertyOf dcterms:contributor;
 	rdfs:domain bibo:Thesis;
@@ -83,7 +83,7 @@ role:984 a owl:ObjectProperty, skos:Concept ;
 	skos:definition "Partenaire de recherche de type équipe de recherche ayant participé à la réalisation de la thèse par la mise à disposition de moyens"@fr;
 	skos:notation "984".
 
-#985 : autre partenaire associé à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/042972817.rdf
+#985 : autre partenaire associé à la thèse anciennement http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/042972817.rdf
 role:985 a owl:ObjectProperty, skos:Concept ; 
     rdfs:subPropertyOf dcterms:contributor;
     rdfs:domain bibo:Thesis;
@@ -93,7 +93,7 @@ role:985 a owl:ObjectProperty, skos:Concept ;
 	skos:definition "Partenaire de recherche de type autre ayant participé à la réalisation de la thèse par la mise à disposition de moyens"@fr;
 	skos:notation "985".
 
-#995 : organisme de cotutelle est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/097145211.rdf
+#995 : organisme de cotutelle anciennement http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/097145211.rdf
 role:995 a owl:ObjectProperty, skos:Concept;
     rdfs:subPropertyOf dcterms:contributor;
     rdfs:domain bibo:Thesis;
@@ -103,7 +103,7 @@ role:995 a owl:ObjectProperty, skos:Concept;
 	skos:definition "Organisme étranger cosignataire de la convention de cotutelle internationale avec l'organisme de soutenance"@fr;
 	skos:notation "995".
 
-#996 : école doctorale associée à la thèse est actuellement transformé en http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/20310000X.rdf
+#996 : école doctorale associée à la thèse anciennement http://id.loc.gov/vocabulary/relators/ths (thesis advisor). Ex. https://www.sudoc.fr/20310000X.rdf
 role:996 a owl:ObjectProperty, skos:Concept; 
     rdfs:subPropertyOf dcterms:contributor;
     rdfs:domain bibo:Thesis;

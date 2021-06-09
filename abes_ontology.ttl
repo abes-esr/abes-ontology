@@ -21,6 +21,8 @@
 @prefix springerB: <http://hub.abes.fr/namespace/springerB/> . # namespaces à changer en namespace (pareil pour SpringerJ)
 @prefix springerChapTypes: <http://hub.abes.fr/springerB/chapterType/>.
 
+## @todo : ajouter isPartOfThisJournal, hasEditorialNote
+
 abes: a owl:Ontology ;
     dcterms:description "Vocabulaires de l'ABES pour l'exposition de ses metadonnées"@fr , "ABES vocabularies for the description of its metadata"@en;
     dcterms:publisher <https://www.idref.fr/033702462>.
@@ -143,7 +145,7 @@ hub:isPartOfThisBook a owl:ObjectProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:isPartOf ;
 	rdfs:label "fait partie de ce livre"@fr, "is part of this book"@en;
-	rdfs:domain rdac:C10001 ;
+	rdfs:domain bibo:Chapter, rdac:C10001 ;
 	rdfs:range bibo:Book, rdac:C10001.
 
 hub:hasAuthorshipAffiliation a owl:ObjectProperty;
@@ -159,8 +161,8 @@ hub:hasAuthorshipAffiliation a owl:ObjectProperty;
 hub:hasAuthorshipNote a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:Description;
-	rdfs:label "a une note relative à cette contribution@fr", "has a note relating to this publication"@en ;
-	rdfs:comment "Note sur le contributeur relative à cette publication"@fr, "Note on the contribor relating to this publication"@en ;
+	rdfs:label "a une note relative à cette contribution@fr", "has a note related to this contribution"@en ;
+	rdfs:comment "Note sur le contributeur relative à cette contribution"@fr, "Note on the contributor related to this contribution"@en ;
 	rdfs:domain vivo:Authorship;
 	rdfs:range rdfs:Literal.
 	
@@ -274,14 +276,14 @@ hub:countryOfPublication a owl:DatatypeProperty;
 	rdfs:comment "Mention de pays de publication"@fr, "Statement of the country of publication"@en;
 	rdfs:domain rdac:C10007, bibo:Document;
 	rdfs:range rdfs:Literal. #Préciser ? 
-## 29/05/2018
-hub:memberOfUnit a owl:ObjectProperty;
-	rdfs:isDefinedBy hub: ;
-	rdfs:subPropertyOf org:memberOf;
-	rdfs:label "est membre d'une unité organisationnelle"@fr, "is member of an organizational unit"@en;
-	rdfs:comment "Relie une personne à une unité organisationnelle à laquelle elle appartient"@fr, "Relates a person to an organizational unit to which they belong"@en;
-	rdfs:domain foaf:Person;
-	rdfs:range org:OrganizationalUnit.
+## 29/05/2018 obsolète avec nouvelle modélisation des affiliations dans ORCID
+#hub:memberOfUnit a owl:ObjectProperty;
+#	rdfs:isDefinedBy hub: ;
+#	rdfs:subPropertyOf org:memberOf;
+#	rdfs:label "est membre d'une unité organisationnelle"@fr, "is member of an organizational unit"@en;
+#	rdfs:comment "Relie une personne à une unité organisationnelle à laquelle elle appartient"@fr, "Relates a person to an organizational unit to which they belong"@en;
+#	rdfs:domain foaf:Person;
+#	rdfs:range org:OrganizationalUnit.
 	
 hub:osti a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
@@ -381,6 +383,23 @@ hub:hasPPN a owl:DatatypeProperty;
 	rdfs:comment "Identifiant interne des notices du Sudoc (PICA Production Number)"@fr, "SUDOC records internal identifier (PICA Production Number)"@en;
 	rdfs:domain bibo:Document;
 	rdfs:range rdfs:Literal.
+	
+#09/06/2021
+hub:isPartOfThisJournal a owl:ObjectProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:isPartOf ;
+	rdfs:label "fait partie de cette revue"@fr, "is part of this journal"@en;
+	rdfs:domain bibo:Article, rdac:C10001 ;
+	rdfs:range bibo:Journal, rdac:C10001.
+
+hub:hasEditorialNote a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:Description;
+	rdfs:label "a pour note éditoriale@fr", "has editorial note"@en ;
+	rdfs:comment "Note non structurée sur la chronologie éditoriale de cette publication"@fr, "Unstructured note on the editorial chronology of this publication"@en ;
+	rdfs:domain vivo:Authorship;
+	rdfs:range rdfs:Literal.
+
 ######################### Classes ####################################
 #Chapter type pour typer la liste fermée ci-dessous
 

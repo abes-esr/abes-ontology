@@ -127,7 +127,7 @@ hub: a owl:Ontology ;
 springerB:bookVolumeNumber a owl:DatatypeProperty ;
    rdfs:isDefinedBy hub: ;
    rdfs:subPropertyOf bibo:volume ;
-   rdfs:label "a pour numéro de volume"@fr, "has volume number"@en ;
+   rdfs:label "numéro de volume"@fr, "volume number"@en ;
    rdfs:comment "Numéro du volume dans sa collection"@fr, "Volume number of the book in the series"@en ;
    rdfs:domain rdac:C10001;
    rdfs:range rdfs:Literal.
@@ -136,7 +136,7 @@ springerB:bookVolumeNumber a owl:DatatypeProperty ;
 springerB:hasSubjectCollection a owl:ObjectProperty ;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:subject ;
-	rdfs:label "a pour domaine de collection"@fr, "has collection domain"@en ;
+	rdfs:label "domaine de collection"@fr, "collection domain"@en ;
 	rdfs:comment "Domaines de collections propres à Springer"@fr, "Springer's own series domains"@en;
 	rdfs:domain bibo:Book, rdac:C10001 ;
 	rdfs:range skos:Concept.
@@ -161,7 +161,7 @@ hub:hasAuthorshipAffiliation a owl:ObjectProperty;
 hub:hasAuthorshipNote a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:Description;
-	rdfs:label "a une note relative à cette contribution@fr", "has a note related to this contribution"@en ;
+	rdfs:label "note relative à cette contribution@fr", "note related to this contribution"@en ;
 	rdfs:comment "Note sur le contributeur relative à cette contribution"@fr, "Note on the contributor related to this contribution"@en ;
 	rdfs:domain vivo:Authorship;
 	rdfs:range rdfs:Literal.
@@ -185,14 +185,14 @@ hub:classification a owl:ObjectProperty;
 hub:classificationCode a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:subject;
-	rdfs:label "a pour code de classification"@fr, "has classification code"@en;
+	rdfs:label "code de classification"@fr, "has classification code"@en;
 	rdfs:comment "Cette propriété relie une instance de Concept à un code de classification"@fr, "This property relates a Concept instance to a classification code"@en;
 	rdfs:domain skos:Concept;
 	rdfs:range rdfs:Literal.
 	
 hub:priority a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
-	rdfs:label "a pour rang de priorité"@fr, "has classification code"@en;
+	rdfs:label "rang de priorité"@fr, "classification code"@en;
 	rdfs:comment "Un nombre entier pondérant la priorité (décroissante) du concept dans un document"@fr, "An integer number weighting the priority of the concept"@en;
 	rdfs:domain skos:Concept;
 	rdfs:range rdfs:Literal.
@@ -200,7 +200,7 @@ hub:priority a owl:DatatypeProperty;
 springerB:chapterType a owl:ObjectProperty; #à corriger plus tard en chapterType
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:subject;
-	rdfs:label "a pour type de chapitre"@fr, "has chapter type"@en;
+	rdfs:label "type de chapitre"@fr, "chapter type"@en;
 	rdfs:comment "Les types de chapitres sont choisis dans une liste fermée propre à Springer"@fr, "Chapter types are chosen in a closed list specific to Springer"@en;
 	rdfs:domain bibo:Chapter, rdac:C10001;
 	rdfs:range springerB:ChapterTypes.
@@ -208,7 +208,7 @@ springerB:chapterType a owl:ObjectProperty; #à corriger plus tard en chapterTyp
 hub:subTitle a owl:DatatypeProperty ;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:title ;
-    rdfs:label "a pour sous-titre"@fr, "has subtitle"@en ;
+    rdfs:label "sous-titre"@fr, "subtitle"@en ;
     rdfs:comment "Sous-titre d'un livre ou d'une revue"@fr , "Subtitle of a book, periodical or series"@en ;
     rdfs:domain bibo:Document, rdac:C10001;
     rdfs:range rdfs:Literal . 
@@ -247,14 +247,14 @@ hub:maybeSameAs a owl:ObjectProperty;
 hub:ddc a owl:DatatypeProperty ;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dc:subject;
-	rdfs:label "a pour indice Dewey"@fr, "has Dewey number"@en;
+	rdfs:label "indice Dewey"@fr, "Dewey number"@en;
 	rdfs:domain rdac:C10001, bibo:Document;
 	rdfs:range rdfs:Literal.
 
 hub:siret a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:identifier;
-	rdfs:label "a un numéro SIRET"@fr, "has SIRET identifier"@en;
+	rdfs:label "numéro SIRET"@fr, "SIRET identifier"@en;
 	rdfs:comment "Identifiant SIRET à 14 chiffres attribué par l'INSEE"@fr, "14-figure SIRET identifier assigned by INSEE"@en;
 	rdfs:domain schema:Organization, foaf:Organization;
 	rdfs:range rdfs:Literal.
@@ -263,7 +263,7 @@ hub:siret a owl:DatatypeProperty;
 hub:degree a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf rdau:P60363;
-	rdfs:label "a pour diplôme"@fr, "has degree"@en;
+	rdfs:label "diplôme"@fr, "degree"@en;
 	rdfs:comment "Tout diplôme universitaire ou professionnel, abrégé ou en toutes lettres"@fr, "Any academic or professionnal degree, in abbreviation or in full"@en;
 	rdfs:domain foaf:Person;
 	rdfs:range rdfs:Literal.
@@ -288,7 +288,7 @@ hub:countryOfPublication a owl:DatatypeProperty;
 hub:osti a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:identifier;
-	rdfs:label "a pour identifiant OSTI"@fr, "has an OSTI identifier"@en;
+	rdfs:label "identifiant OSTI"@fr, "OSTI identifier"@en;
 	rdfs:comment "identifiant attribué à un document par l'Office of Scientific and Technical Information (Etats-Unis)"@fr, "Identifier assigned to a document by the Office of Scientific and Technical Information (US)"@en;
 	rdfs:domain rdac:C10007, bibo:Document;
 	rdfs:range rdfs:Literal.
@@ -296,7 +296,7 @@ hub:osti a owl:DatatypeProperty;
 hub:eid a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:identifier;
-	rdfs:label "a pour EID Scopus"@fr, "has a Scopus EID"@en;
+	rdfs:label "EID Scopus"@fr, "Scopus EID"@en;
 	rdfs:comment "Identifiant attribué à un document par la base de données Scopus"@fr, "Identifier assigned to a document by the Scopus database"@en;
 	rdfs:domain rdac:C10007, bibo:Document;
 	rdfs:range rdfs:Literal.
@@ -304,7 +304,7 @@ hub:eid a owl:DatatypeProperty;
 hub:wosuid a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:identifier;
-	rdfs:label "a pour identifiant WOS"@fr, "has a WOS identifier"@en;
+	rdfs:label "identifiant WOS"@fr, "WOS identifier"@en;
 	rdfs:comment "Identifiant attribué à un document par le Web of Science"@fr, "Identifier assigned to a document by the Web of Science"@en;
 	rdfs:domain rdac:C10007, bibo:Document;
 	rdfs:range rdfs:Literal.
@@ -312,7 +312,7 @@ hub:wosuid a owl:DatatypeProperty;
 hub:ringgoldID a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:identifier;
-	rdfs:label "a pour identifiant Ringgold"@fr, "has a Ringgold identifier"@en;
+	rdfs:label "identifiant Ringgold"@fr, "Ringgold identifier"@en;
 	rdfs:comment "Identifiant pour les organisations du secteur de l'édition"@fr, "Identifier for organizations in the publishing industry"@en;
 	rdfs:domain rdac:C10007, bibo:Document;
 	rdfs:range rdfs:Literal.
@@ -320,7 +320,7 @@ hub:ringgoldID a owl:DatatypeProperty;
 hub:fundrefID a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:identifier;
-	rdfs:label "a pour identifiant FundRef"@fr, "has a FundRef identifier"@en;
+	rdfs:label "identifiant FundRef"@fr, "FundRef identifier"@en;
 	rdfs:comment "Identifiant pour les organismes accordant des subventions"@fr, "Identifier for grant-giving organizations"@en;
 	rdfs:domain org:Organization, foaf:Organization;
 	rdfs:range rdfs:Literal.
@@ -328,7 +328,7 @@ hub:fundrefID a owl:DatatypeProperty;
 hub:articleType a owl:ObjectProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:subject;
-	rdfs:label "a pour type d'article"@fr, "has article type"@en;
+	rdfs:label "type d'article"@fr, "article type"@en;
 	rdfs:comment "Catégorie d'article (liste non fermée)"@fr, "Article category (unclosed list)"@en;
 	rdfs:domain rdac:C10001,bibo:Article;
 	rdfs:range skos:Concept.
@@ -336,7 +336,7 @@ hub:articleType a owl:ObjectProperty;
 hub:rankByRole a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf vivo:rank;
-	rdfs:label "a pour rang par rôle"@fr, "has a rank by role"@en;
+	rdfs:label "rang par rôle"@fr, "rank by role"@en;
 	rdfs:comment "A pour valeur un code Marc Relator suivi d'un numéro de classement : ex. aut1 pour la première mention d'auteur"@fr, "Has for value a Marc Relator code followed by a ranking number : e.g. aut1 for the first author statement"@en;
 	rdfs:domain vivo:Authorship;
 	rdfs:range rdfs:Literal.
@@ -345,7 +345,7 @@ hub:rankByRole a owl:DatatypeProperty;
 hub:hasForHeight a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:format;
-	rdfs:label "a pour hauteur"@fr, "has for height"@en;
+	rdfs:label "hauteur"@fr, "height"@en;
 	rdfs:comment "Hauteur d'un document imprimé"@fr, "Height of a printed document"@en;
 	rdfs:domain rdac:C10007, bibo:Document;
 	rdfs:range rdfs:Literal.
@@ -353,7 +353,7 @@ hub:hasForHeight a owl:DatatypeProperty;
 hub:sercode a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:identifier;
-	rdfs:label "a pour code de collection"@fr, "has for series code"@en;
+	rdfs:label "code de collection"@fr, "series code"@en;
 	rdfs:comment "identifant interne d'une collection, attribué par un éditeur"@fr, "internal series identifier, assigned by a publisher"@en;
 	rdfs:domain rdac:C10007, bibo:Series;
 	rdfs:range rdfs:Literal.
@@ -361,7 +361,7 @@ hub:sercode a owl:DatatypeProperty;
 hub:publisher-id a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:identifier;
-	rdfs:label "a pour identifiant d'éditeur"@fr, "has for publisher identifier"@en;
+	rdfs:label "identifiant d'éditeur"@fr, "publisher identifier"@en;
 	rdfs:comment "identifant interne d'une revue, ou d'un article, attribué par un éditeur"@fr, "internal journal, or article identifier, assigned by a publisher"@en;
 	rdfs:domain rdac:C10001, bibo:Document;
 	rdfs:range rdfs:Literal.
@@ -370,7 +370,7 @@ hub:publisher-id a owl:DatatypeProperty;
 hub:ean a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:identifier;
-	rdfs:label "a pour code-barres"@fr, "has for barcode"@en;
+	rdfs:label "code-barres"@fr, "barcode"@en;
 	rdfs:comment "European Article Number"@fr, "European Article Number"@en;
 	rdfs:domain bibo:Document;
 	rdfs:range rdfs:Literal.
@@ -379,7 +379,7 @@ hub:ean a owl:DatatypeProperty;
 hub:hasPPN a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:identifier;
-	rdfs:label "a pour PPN"@fr, "has for PPN"@en;
+	rdfs:label "PPN"@fr, "PPN"@en;
 	rdfs:comment "Identifiant interne des notices du Sudoc (PICA Production Number)"@fr, "SUDOC records internal identifier (PICA Production Number)"@en;
 	rdfs:domain bibo:Document;
 	rdfs:range rdfs:Literal.
@@ -395,9 +395,18 @@ hub:isPartOfThisJournal a owl:ObjectProperty;
 hub:hasEditorialNote a owl:DatatypeProperty;
 	rdfs:isDefinedBy hub: ;
 	rdfs:subPropertyOf dcterms:Description;
-	rdfs:label "a pour note éditoriale@fr", "has editorial note"@en ;
+	rdfs:label "note éditoriale"@fr, "editorial note"@en ;
 	rdfs:comment "Note non structurée sur la chronologie éditoriale de cette publication"@fr, "Unstructured note on the editorial chronology of this publication"@en ;
 	rdfs:domain vivo:Authorship;
+	rdfs:range rdfs:Literal.
+	
+#14/10/2021
+hub:IssueSectionTitle a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:Title;
+	rdfs:label "titre de rubrique"@fr, "issue section title";
+	rdfs:comment "Titre de la rubrique du numéro d'une revue dans laquelle est publiée l'article"@fr, "Title of the section of a journal issue in which the article is published"@en;
+	rdfs:domain rdac:C10001,bibo:Article;
 	rdfs:range rdfs:Literal.
 
 ######################### Classes ####################################

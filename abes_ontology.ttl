@@ -1,4 +1,5 @@
 @prefix abes: <http://www.abes.fr/vocabularies/> .
+@prefix sudoc: <http://www.abes.fr/vocabularies/sudoc/> .
 @prefix theses: <http://www.abes.fr/vocabularies/theses> .
 @prefix role: <http://www.abes.fr/vocabularies/theses/roles/> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
@@ -114,6 +115,18 @@ role:996 a owl:ObjectProperty, skos:Concept;
 	rdfs:label "Ecole doctorale associée à la thèse"@fr,"Doctoral school associated with the thesis"@en;
 	skos:definition "Ecole doctorale au sein de laquelle s'est déroulée la recherche du doctorant"@fr;
 	skos:notation "996".
+	
+#########################################################################
+########################### data.idref.fr ###############################
+#########################################################################
+
+# Nombre de localisations pour chaque document 
+sudoc:holdingsCount a owl:DatatypeProperty;
+	rdfs:subPropertyOf schema:numberOfItems;
+	rdfs:Domain bibo:Document ;
+	rdfs:range xsd:Integer;
+	rdfs:label "Nombre d'items"@fr, "Number of items"@en;
+	rdfs:comment "Nombre de localisations correspondant à ce document dans le Sudoc"@fr,"Number of holdings corresponding this document in Sudoc"@en.
 	
 #########################################################################
 ######################### Hub de métadonnées ############################

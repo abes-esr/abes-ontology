@@ -443,6 +443,7 @@ idrefplus:FrenchCountry a owl:Class;
 
 idrefplus:EmployeeCountry a owl:Class;
 	rdfs:isDefinedBy idrefplus: ;
+	rdfs:subClassOf idrefplus:CocardeFR;
 	rdfs:label "Lié à une affiliation française"@fr, "Related to a French affiliation"@en.
 	
 idrefplus:StudentCountry a owl:Class;

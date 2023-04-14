@@ -6,6 +6,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix idrefplus: <http://idrefplus.idref.fr/namespace/>.
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdac: <http://rdaregistry.info/Elements/c/> .
 @prefix rdam: <http://rdaregistry.info/Elements/m/> .
@@ -428,6 +429,31 @@ hub:IssueSectionTitle a owl:DatatypeProperty;
 springerB:ChapterTypes a skos:ConceptScheme;
 	rdfs:isDefinedBy hub: ;
 	rdfs:label "Type de chapitre"@fr, "Chapter type"@en.
+	
+#idrefplus : "cocardes" FR
+
+idrefplus:CocardeFR a owl:Class;
+	rdfs:isDefinedBy idrefplus: ;
+	rdfs:label "Périmètre ORCID-FR"@fr, "ORCID-FR perimeter"@en.
+
+idrefplus:FrenchCountry a owl:Class;
+	rdfs:isDefinedBy idrefplus: ;
+	rdfs:subClassOf idrefplus:CocardeFR;
+	rdfs:label "Français ou en activité en France"@fr, "French or in office in France "@en.
+
+idrefplus:EmployeeCountry a owl:Class;
+	rdfs:isDefinedBy idrefplus: ;
+	rdfs:label "Lié à une affiliation française"@fr, "Related to a French affiliation"@en.
+	
+idrefplus:StudentCountry a owl:Class;
+	rdfs:isDefinedBy idrefplus: ;
+	rdfs:subClassOf idrefplus:CocardeFR;
+	rdfs:label "alumni d'un établissement de formation français"@fr, "Related to a French training institution"@en.
+	
+idrefplus:MailCountry a owl:Class;
+	rdfs:isDefinedBy idrefplus: ;
+	rdfs:subClassOf idrefplus:CocardeFR;
+	rdfs:label "A un email français (.fr)"@fr, "has a French email (.fr)"@en.
 
 ######################### Valeurs contrôlées ###############################
 

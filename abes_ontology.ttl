@@ -422,6 +422,29 @@ hub:IssueSectionTitle a owl:DatatypeProperty;
 	rdfs:comment "Titre de la rubrique du numéro d'une revue dans laquelle est publiée l'article"@fr, "Title of the section of a journal issue in which the article is published"@en;
 	rdfs:domain rdac:C10001,bibo:Article;
 	rdfs:range rdfs:Literal.
+	
+#23/10/2024
+hub:gridID a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "identifiant GRID"@fr, "GRID identifier"@en;
+	rdfs:comment "Identifiant attribués aux organismes de recherche (Global Research Identifier Database), jusqu'en septembre 2021"@fr, "Identifier for research-related organizations (Global Research Identifier Database) until September 2021"@en;
+	rdfs:domain org:Organization, foaf:Organization;
+	rdfs:range rdfs:Literal.
+	
+hub:rorID a owl:DatatypeProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:identifier;
+	rdfs:label "identifiant ROR"@fr, "ROR identifier"@en;
+	rdfs:comment "Identifiant attribués aux organismes de recherche (Research Organization Registry)"@fr, "Identifier for research-related organizations (Research Organization Registry)"@en;
+	rdfs:domain org:Organization, foaf:Organization;
+	rdfs:range rdfs:Literal.
+	
+hub:hasInformationSource a owl:ObjectProperty;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subPropertyOf dcterms:relation ;
+	rdfs:label "A pour source d'information,"@fr, "has source of information"@en;
+	rdfs:range hub:DataSource.
 
 ######################### Classes ####################################
 #Chapter type pour typer la liste fermée ci-dessous
@@ -439,7 +462,7 @@ idrefplus:CocardeFR a owl:Class;
 idrefplus:FrenchCountry a owl:Class;
 	rdfs:isDefinedBy idrefplus: ;
 	rdfs:subClassOf idrefplus:CocardeFR;
-	rdfs:label "Français ou en activité en France"@fr, "French or in office in France "@en.
+	rdfs:label "Français ou en activité en France"@fr, "French or in office in France"@en.
 
 idrefplus:EmployeeCountry a owl:Class;
 	rdfs:isDefinedBy idrefplus: ;
@@ -455,6 +478,19 @@ idrefplus:MailCountry a owl:Class;
 	rdfs:isDefinedBy idrefplus: ;
 	rdfs:subClassOf idrefplus:CocardeFR;
 	rdfs:label "A un email français (.fr)"@fr, "has a French email (.fr)"@en.
+	
+#23/10/2024
+
+hub:DataSource a owl:Class;
+	rdfs:isDefinedBy hub: ;
+	rdfs:label "Source d'information"@fr, "Source d'information"@en ;
+	rdfs:comment "Identifie une source d'information dans un contexte donné (ex. : données dans un compte ORCID)"@fr, "Identifies a source of information in a given context (e.g. data in an ORCID account)"@en.
+	
+hub:CertifiedSource a owl:Class;
+	rdfs:isDefinedBy hub: ;
+	rdfs:subClassOf hub:DataSource ;
+	rdfs:label "Source d'information certifiée"@fr, "Source d'information certifiée"@en ;
+	rdfs:comment "Identifie une source d'information certifiée dans un contexte donné (ex. : données dans un compte ORCID provenant d'une source certifiée)"@fr, "Identifies a certified source of information in a given context (e.g. data in an ORCID account, updated from a certified source)"@en.
 
 ######################### Valeurs contrôlées ###############################
 
